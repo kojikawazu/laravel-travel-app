@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build --mode production"
+        "build": "vite build --mode production",
+        "vercel-build": "vite build --mode production"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
