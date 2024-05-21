@@ -68,6 +68,15 @@ php artisan migrate
 php artisan serve
 ```
 
+# Vercel のインストール
+
+Vercel へデプロイ前にインストールする
+
+```bash
+composer require revolution/laravel-vercel-installer --dev
+php artisan vercel:install
+```
+
 # URL
 
 -   Supabase
