@@ -29,7 +29,7 @@ COPY . .
 # Laravel依存関係をインストール
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-plugins --no-scripts --no-progress \
     && npm install \
-    && npm run prod
+    && npm run build
 
 # 必要なディレクトリの権限を設定
 RUN chown -R www-data:www-data storage bootstrap/cache
