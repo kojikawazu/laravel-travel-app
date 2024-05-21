@@ -1,8 +1,9 @@
 {
+    "version": 2,
     "regions": [
         "hnd1"
     ],
-    "builds": [
+    "functions": [
         {
             "src": "/api/index.php",
             "use": "vercel-php@0.5.4"
