@@ -82,3 +82,7 @@ php artisan vercel:install
 -   Supabase
 
 https://supabase.com/dashboard
+
+-   Vercel Deploy Error
+
+https://github.com/vercel-community/php/issues/504
