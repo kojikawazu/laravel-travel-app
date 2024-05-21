@@ -1,11 +1,6 @@
 services:
   - type: web
     name: laravel-travel-app
-    env: node
+    env: docker
     plan: free
-    buildCommand: |
-      curl -sS https://getcomposer.org/installer | php
-      php composer.phar install
-      npm install
-      npm run prod
-    startCommand: php artisan serve --host 0.0.0.0 --port 10000
+    dockerfilePath: Dockerfile
