@@ -6,6 +6,10 @@
         {
             "src": "/api/index.php",
             "use": "vercel-php@0.5.4"
+        },
+        {
+            "src": "public/**",
+            "use": "vercel-php@0.5.4"
         }
     ],
     "routes": [
@@ -28,7 +32,6 @@
     ],
     "env": {
         "APP_NAME": "Laravel Vercel",
-        "APP_DEBUG": "false",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
