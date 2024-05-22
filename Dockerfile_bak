@@ -1,0 +1,42 @@
+# ベースイメージとしてPHPとApacheを使用
+FROM php:8.1-apache
+
+# 必要なパッケージをインストール
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    libzip-dev \
+    npm \
+    && docker-php-ext-install zip pdo_mysql
+
+# Composerをインストール
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Apacheの設定
+COPY ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN a2enmod rewrite
+
+# アプリケーションコードをコピー
+COPY . /var/www/html
+
+# 作業ディレクトリの設定
+WORKDIR /var/www/html
+
+# 依存関係をインストール
+RUN composer install
+RUN npm install
+
+# ビルドプロセスを実行
+RUN npm run build
+
+# Laravelのキャッシュを生成
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
+
+# ストレージとキャッシュディレクトリのパーミッションを設定
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Apacheを再起動
+CMD ["apache2-foreground"]
