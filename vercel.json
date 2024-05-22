@@ -33,25 +33,5 @@
     "LOG_CHANNEL": "stderr",
     "SESSION_DRIVER": "cookie",
     "VIEW_COMPILED_PATH": "/tmp"
-  },
-  "build": {
-    "env": {
-      "COMPOSER_ALLOW_SUPERUSER": "1",
-      "COMPOSER_HOME": "/tmp"
-    },
-    "steps": [
-      {
-        "name": "Install PHP and Composer",
-        "shell": "apt-get update && apt-get install -y php-cli php-mbstring unzip && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer"
-      },
-      {
-        "name": "Install dependencies",
-        "shell": "composer install && npm install"
-      },
-      {
-        "name": "Build",
-        "shell": "npm run build"
-      }
-    ]
   }
 }
