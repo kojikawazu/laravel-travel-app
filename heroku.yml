@@ -1,0 +1,10 @@
+build:
+  buildpacks:
+    - heroku/php
+    - heroku/nodejs
+  config:
+    NPM_CONFIG_PRODUCTION: false
+    NODE_ENV: development
+  scripts:
+    - npm install
+    - npm run build

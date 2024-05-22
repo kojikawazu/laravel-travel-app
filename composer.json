@@ -48,10 +48,8 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "post-install-cmd": [
-            "npm install",
-            "npm run build"
-        ]
+        "heroku-prebuild": "composer install",
+        "heroku-postbuild": "npm run build"
     },
     "extra": {
         "laravel": {
